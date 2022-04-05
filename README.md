@@ -8,5 +8,3 @@ Roll number: BT21BTECH11002
 Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
 
 List of assignments
-Assignment 1
-29 March 2022

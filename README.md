@@ -6,5 +6,3 @@ Name: Aryan Sharan Reddy
 Roll number: BT21BTECH11002
 
 Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
-
-List of assignments

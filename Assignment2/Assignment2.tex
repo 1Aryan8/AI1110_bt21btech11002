@@ -328,29 +328,81 @@ This document contains the solution for Assignment 2 (ICSE Class 12 Maths 2019 Q
 	   \label{eq:9} \therefore S &= 2a^2 + \dfrac{16384}{a}
 	    \end{align}
 	    
-	  For minimum cost we must have minimum surface area.
+	    Now let $S = y = f(a)$
 	    
-	  Now, for minimum value of surface area, we must have
-	  \begin{align}
-	  \label{eq:10}\dfrac{dS}{da}&=0\\
-	  \dfrac{dS}{da} &= 4a-\dfrac{16384}{a^2}
-	  \end{align}
+	    We need to find the a at where f(a) is minimum by using gradient descent method.
+	    
+Let us find $\nabla f(a)$
+\begin{align}
+    \frac{dy}{da} &= \frac{d}{da}\brak{2a^2 + \dfrac{16384}{a}} \\
+   \implies f^{\prime}(a) &= 4a-\dfrac{16384}{a^2}
+\end{align}
+
+We will be able to find the corresponding a value of the minimum of $f(a)$ by iterating the following equation till $\brak{f^{\prime}\brak{a_{k-1}}}$ approaches zero.
+
+\begin{align}
+a_{k} = a_{k-1} - \brak{\alpha\times f^{\prime}\brak{a_{k-1}}} 
+\end{align}
+where $a_{k-1}$ is initial assumed value/ previous obtained value
+
+$a_k$ is updated assumed value
+
+$\alpha$ represents the step size we are taking according to the slope $\brak{f^{\prime}\brak{a_{k-1}}}$
+
+At first, let us randomly choose $a_{k-1}$ as $4$. Then, $f^{\prime}\brak{4} = -1008 $.
+
+Since the slope is too far from zero and for manual purpose, we can take large step size. Hence let us choose $\alpha$ as $0.125$ 
+
+Lets go through couple of iterations
+
+
+\begin{align}
+    a_k &= 4     - 0.125\times\brak{-1008}\\
+    &= 130 \\
+    a_k &= 130 - 0.125\times\brak{519.03053}\\
+    &= 65.12118 \\
+    a_k &= 65.12118 - 0.125\times\brak{256.62127} \\
+    &= 33.04353\\
+    a_k &= 33.04353 - 0.125\times\brak{117.16874}\\
+    &= 18.39744 \\
+    a_k &= 18.39744 - 0.125\times\brak{25.1831}\\
+    &= 15.24956 \\
+    a_k &= 15.24956 - 0.125\times\brak{-9.4557}\\
+    &= 16.43152 \\
+    a_k &= 16.43152 - 0.125\times\brak{5.04345}\\
+    &= 15.80109 \\
+    a_k &= 15.80109 - 0.125\times\brak{-2.41709}\\
+    &= 16.10322 \\
+    a_k &= 16.10322 - 0.125\times\brak{1.23072}\\
+    &= 15.94938
+\end{align}
+
+Clearly, we observe that $a_k$ is tending to 16 from both the left hand side as well as the right hand side. Hence the possible whole number at where the minimum of $f(a)$ exists is $a=16$.
+%\textbf{Note}: For solving the minimum using gradient descent method with5 algorithms, we can iterate through a lot of times to obtain the more precise value and we can take small step size too.\newline
+
+	  %For minimum cost we must have minimum surface area.
+	    
+	  %Now, for minimum value of surface area, we must have
+	  %\begin{align}
+	  %\label{eq:10}\dfrac{dS}{da}&=0\\
+	  %\dfrac{dS}{da} &= 4a-\dfrac{16384}{a^2}
+	  %\end{align}
 	  
-	  From \eqref{eq:10}, we have
+	  %From \eqref{eq:10}, we have
 	  
-	  \begin{align}4a-\dfrac{16384}{a^2} &= 0\\
-	   \implies4a &= \dfrac{16384}{a^2}\\
-	  \implies a^3 &= 4096\\    
-	 \implies a &= 16
-	 \end{align}
+	  %\begin{align}4a-\dfrac{16384}{a^2} &= 0\\
+	   %\implies4a &= \dfrac{16384}{a^2}\\
+	  %\implies a^3 &= 4096\\    
+	 %\implies a &= 16
+	 %\end{align}
 	 
-	 Taking the second derivative of S, we get
+	 %Taking the second derivative of S, we get
 	 
-	 \begin{equation}
-	 \label{eq:16}\dfrac{d^2S}{da^2} = 4 + \dfrac{32768}{a^3}
-	 \end{equation}\\
-	 Clearly \eqref{eq:16} is positive for all positive values of a.
-	 S has a minimum at a = 16
+	 %\begin{equation}
+	 %\label{eq:16}\dfrac{d^2S}{da^2} = 4 + \dfrac{32768}{a^3}
+	 %\end{equation}\\
+	 %Clearly \eqref{eq:16} is positive for all positive values of a.
+	 %S has a minimum at a = 16
 	 
 	  Put $a = 16$ in \eqref{eq:9},
 	  
@@ -375,7 +427,7 @@ This document contains the solution for Assignment 2 (ICSE Class 12 Maths 2019 Q
 	  \begin{align} C_m &= 4\times1536\\
 	   &=3072
 	   \end{align}
-	   \text{\fbox{{\therefore} $The minimum cost of polishing the metal box is  \rupee 3072$}}
+	   \text{\fbox{{\therefore} $The minimum cost of polishing the metal box is  {\rupee 3072}$}}
 	   \begin{table}[h] 
 \caption{\textbf{Design Table}}
 \label{Table}
@@ -384,4 +436,3 @@ This document contains the solution for Assignment 2 (ICSE Class 12 Maths 2019 Q
 	   
 %\end{flushleft}	 
 \end{document}
-

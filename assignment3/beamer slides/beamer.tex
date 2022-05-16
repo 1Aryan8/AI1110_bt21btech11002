@@ -1,1 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}
+
+% Title page details: 
+\title{AI1110: Assignment 3} 
+\author{Aryan Sharan Reddy\\BT21BTECH11002}
+\date{\today}
+%\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+%\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+
+Two groups are competing for the position on the Board of directors of a corporation. The probabilities that the first and the second groups will win are 0.6 and 0.4 respectively. Further, if the first group wins, the probability of introducing a new product is 0.7 and the corresponding probability is 0.3 if the second group wins. Find the probability that the new product introduced was by the second group.
+
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+    Let random variables $X, Y \in \cbrak{0,1}$ denote the following events in Table \eqref{table:table1}
+    \begin{table}[ht!]
+		\centering
+		\input{table1.tex}
+		\caption{Description of events}
+		\label{table:table1}	
+	\end{table}
+\end{frame} 
+
+\begin{frame}{Input probabilities}
+	The following are the input probabilities as given in the question:
+	\begin{table}[ht!]
+		\centering
+		\input{table2.tex}
+		\caption{Input probabilities}
+		\label{table:table2}	
+	\end{table}
+	\end{frame}
+
+\begin{frame}{Solving..}
+	The required probability is given by:
+	\begin{align}
+		&\pr{X = 1|Y = 0} \\ 
+		&= \frac{\pr{Y = 0,X = 1}}{\pr{Y = 0}} \\
+		&= \frac{\pr{Y = 0|X = 1}\pr{X = 1}}{\sum_{i=0}^1 \pr{X = i,Y = 0}} \\
+		&= \frac{\pr{Y = 0|X = 1}\pr{X = 1}}{\sum_{i=0}^1 \pr{Y = 0|X = i}\pr{X = i}}
+	\end{align}
+	\end{frame}
+	
+	% The final answer
+	\section{Answer}
+	\begin{frame}{Answer}
+	On substituting the values from Table \eqref{table:table2} we get:
+	\begin{align}
+		\pr{Y = 0|X = 1} &= \frac{0.4 \times 0.3}{0.6 \times 0.7 + 0.4 \times 0.3} \\
+		&= \frac{12}{54}\\
+		&= \frac{2}{9}\approx 0.222
+	\end{align}
+	\end{frame}
+\end{document}

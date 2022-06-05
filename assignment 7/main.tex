@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}
+
+% Title page details: 
+\title{AI1110: Assignment 7} 
+\author{Aryan Sharan Reddy\\BT21BTECH11002}
+\date{\today}
+%\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+%\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+  The random variable $x$ has a Poisson distribution with mean $\theta$. We wish to find the Bayesian estimate $\hat{\theta}$ of $\theta$ under the assumption that $\theta$ is the value of a random variable $\theta$ with prior density $f_{\theta}(\theta) \sim {\theta}^{b}e^{-c\theta}U(\theta)$.  Show that $$\hat{\theta} = \dfrac{n\bar{x}+b+1}{n+c}$$
+
+\end{frame}
+
+\section{Solution}
+\begin{frame}{Solution}
+The sum n\bar{x} is a Poisson random variable with mean n\theta.
+
+In the context of Bayesian estimation this means that
+\begin{equation}
+    f_{\bar{x}}(\bar{x}|\theta)= e^{-n\theta}\dfrac{(n\theta)^k}{k!} \hspace{1cm}             k=n\bar{x}=0,1,...
+    \label{eq:1}
+\end{equation}
+Also, we know that
+\begin{equation}
+    f_{\theta}(\theta|X)= \dfrac{f(X|\theta)}{f(X)}f_{\theta}(\theta) \hspace{1cm} X = [x_1, ..., x_n]
+    \label{eq:2}
+\end{equation}
+
+Here, $f(X|\theta)$ is the conditional density of the n random variables $x_i$ assuming $\theta = \theta$. 
+\end{frame}
+
+\section{Solution(Contd..)}
+\begin{frame}{Solution(Contd..)}
+Inserting \eqref{eq:1} into \eqref{eq:2}, we obtain
+\begin{equation}
+    f_{\theta}(\theta|\bar{x})=  \dfrac{(n+c)^{n\bar{x}+b+1}}{\Gamma(n\bar{x}+b+a)}\theta^{n\bar{x}+b} e^{-(n+c)\theta}
+\end{equation}
+ Also, from
+\begin{equation}
+    \hat{\theta} = E\{\theta|X\} = \int_{-\infty}^{\infty} \theta f_{\theta}(\theta|X)d\theta
+\end{equation}
+we obtain
+\begin{align}
+    \hat{\theta}&= \dfrac{(n+c)^{n\bar{x}+b+1}}{\Gamma(n\bar{x}+b+1)} \times \dfrac{\Gamma(n\bar{x}+b+2)}{(n+c)^{n\bar{x}+b+2}}\\
+    &= \dfrac{n\bar{x}+b+1}{n+c}\\
+    \therefore \lim_{n \to \infty} \hat{\theta} &= \bar{x}
+\end{align}
+%\therefore \lim_{n \to \infty} \hat{\theta} &= \bar{x}
+\end{frame}
+
+\end{document}

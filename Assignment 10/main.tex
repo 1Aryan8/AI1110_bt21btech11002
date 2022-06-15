@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}
+
+% Title page details: 
+\title{AI1110: Assignment 10} 
+\author{Aryan Sharan Reddy\\BT21BTECH11002}
+\date{\today}
+%\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+%\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question}
+\begin{frame}{Question}
+Show that 
+    
+\begin{center}
+
+R_{xy}(\lambda)= \lim_{T \to \infty} \dfrac{1}{2T} \int_{-T}^{T} x(t+ \lambda)y(t)dt\\
+
+\end{center}
+iff
+\begin{center}
+    \lim_{T \to \infty} \dfrac{1}{2T} \int_{-2T}^{2T} (1- \dfrac{|\tau|}{2T}) E\{x(t+ \lambda + \tau)y(t + \tau)x(t+ \lambda)y(t)\}d\tau= R^2_{xy}(\lambda) 
+\end{center}
+\end{frame}
+
+\section{Solution}
+\begin{frame}{Solution}
+
+If $z(t)=x(t+\lambda)y(t)$, then
+
+\begin{equation}
+    C_{zz}(\tau) = E\{x(t+ \lambda + \tau)y(t + \tau)x(t+ \lambda)y(t)\}d\tau - R^2_{xy}(\lambda)
+\end{equation}
+%Since, z(t) is stationary, we have it's autocovariance as
+Now we know that a process x(t) with autocovariance $C(\tau)$ is mean-ergodic iff
+\begin{align}
+    C_{zz}(\tau) &= \dfrac{1}{2T} \int_{-2T}^{2T} C(\tau)(1-\dfrac{|\tau|}{2T})d\tau\\
+    &= \dfrac{1}{T} \int_{0}^{2T} C(\tau)(1-\dfrac{|\tau|}{2T})d\tau \longrightarrow_{T \to \infty} 0
+\end{align}
+The given process is mean-ergodic
+
+{\implies} R_{xy}(\lambda)= \lim_{T \to \infty} \dfrac{1}{2T} \int_{-T}^{T} x(t+ \lambda)y(t)dt
+
+\end{frame}
+\end{document}

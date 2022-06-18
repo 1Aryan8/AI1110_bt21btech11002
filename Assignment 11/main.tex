@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}
+
+% Title page details: 
+\title{AI1110: Assignment 11} 
+\author{Aryan Sharan Reddy\\BT21BTECH11002}
+\date{\today}
+%\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+%\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Question (a)}
+\begin{frame}{Question (a)}
+Consider a stationary Markov chain $... x_{n},x_{n+1}, x_{n+2},...$ with transition probabilities $\{p_{ij}\}$ and steady state probabilities ${q_{ij}}$. (a) Show that the reversed sequence $...x_{n}, x_{n-1}, x_{n-2},...$ is also a stationary Markov process with transition probabilities
+
+\begin{center}
+    P\{x_{n} = j |x_{n+1} = i\} \triangleq p_{ij}^{*} = \dfrac{q_{j}p{ji}}{q_{i}}\\
+\end{center}
+and steady state probabilities \{q_{i}\}.
+
+A Markov chain is said to be time reversible if $p_{ij}^{*} = p_{ij}$ for all i, j.
+\end{frame}
+
+\section{Question (b)}
+\begin{frame}{Question (b)}
+Show that a necessary condition for time reversibility is that
+
+\begin{center}
+    $p_{ij}p_{ik}p_{ki} = p_{ik}p_{kj}p_{ji}$    for all i, j, k\\
+\end{center}
+
+which states that the transition $e_{i} \to e_{j} \to e_{k} \to e_{i}$ has the same probability as the reversed transition $e_{i} \to e_{k} \to e_{j} \to e_{i}$. In fact, for a reversible chain starting at any state $e_{i}$, any path back to $e_{i}$ has the same probability as the reversed path.
+\end{frame}
+
+
+\section{Solution (a)}
+\begin{frame}{Solution (a)}
+From Bayes' theorem
+\begin{align}
+     P\{x_{n} = j |x_{n+1} = i\} &= \dfrac{ P\{x_{n+1} = i |x_{n} = j\} P\{x_{n} = j\}}{ P\{x_{n+1} = i\}}\\
+     \label{eq:2}
+     &= \dfrac{q_{j}p_{ji}}{q_{i}}= p_{ij}^{*},
+\end{align}
+where we have assumed the chain to be in steady state
+\end{frame}
+
+\section{Solution (b)}
+\begin{frame}{Solution (b)}
+Notice that time-reversibility is equivalent to
+\begin{equation}
+    p_{ij}^{*} = p_{ij}
+    \label{eq:3}
+\end{equation}
+and using \eqref{eq:2} this gives us,
+\begin{equation}
+    p_{ij}^{*} = \dfrac{q_{j}p_{ji}}{q_{i}} = p_{ij}
+\end{equation}
+or, for a time reversible chain, we get
+\begin{equation}
+    q_{j} \times p_{ji} = q_{i} \times p_{ij}
+\end{equation}
+Thus, using \eqref{eq:3}, we obtain, the desired result, by direct substitution
+\begin{align}
+    p_{ij}p_{ik}p_{ki} &= (\dfrac{q_{j}}{q_{i}}p_{ji})(\dfrac{q_{k}}{q_{j}}p_{kj})(\dfrac{q_{i}}{q_{k}}p_{ik}) \\
+    &= p_{ik}p_{kj}p_{ji}   
+\end{align}
+    
+%\end{equation}
+\end{frame}
+\end{document}
